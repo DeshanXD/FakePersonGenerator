@@ -1,3 +1,13 @@
-#This is Easy Fake Person Generator
+# FakePersonGenerator
 
-You can use this simple script to generator fake person data and save that file immediately in current directory. It's quet helpful when saving credentials to files
+FakePersonGenerator is simply tool design for gather fake digital identity information. Mostly used for online sign ups
+
+## Usage
+
+```bash
+python3 app.py
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
