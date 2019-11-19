@@ -1,6 +1,6 @@
 # FakePersonGenerator
 
-FakePersonGenerator is simply tool design for gather fake digital identity information. Mostly used for online sign ups
+FakePersonGenerator is simply tool design for gather fake digital identity information. Mostly used for online sign ups. This only create text file with all the information you need to Sign UP.
 
 ## Usage
 
