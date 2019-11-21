@@ -9,11 +9,13 @@ def request_data():
     returnData = req.get2json_pretty("https://randomuser.me/api/")
     returnData = json.loads(returnData)
     formatarr = list(zip(xdarr, formatplus(returnData)))
-    print(formatarr)
+    writedata(formatarr)
 
 
-def writedata():
+def writedata(array):
     with open('personinfo.txt', 'w+') as file:
+        for key, value in array:
+            file.write(f'{key} : {value}\n')
 
 
 def formatplus(returnData):
@@ -38,7 +40,6 @@ def formatplus(returnData):
 
 
 # request_data()
-writedata()
 
 
 # f = open(personName, "w+")
