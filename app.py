@@ -47,7 +47,6 @@ root.title("Fake Person Generator")
 canvas = tk.Canvas(root, height=300, width=400)
 canvas.pack()
 
-
 background_image = tk.PhotoImage(file='src/background.png')
 background_label = tk.Label(root, image=background_image)
 background_label.place(relwidth=1, relheight=1)
