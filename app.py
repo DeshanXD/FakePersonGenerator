@@ -9,8 +9,13 @@ def request_data():
     returnData = req.get2json_pretty("https://randomuser.me/api/")
     returnData = json.loads(returnData)
 
+    # Adding JSON data into a array using generator
+    arr = []
+    for value in formatplus(returnData):
+        arr.append(value)
+
     # Formating array with given keys using zip
-    formatarr = list(zip(xdarr, formatplus(returnData)))
+    formatarr = list(zip(xdarr, arr))
 
     # Calling writedata function for save the file
     writedata(formatarr)
@@ -33,26 +38,23 @@ def writedata(array):
 def formatplus(returnData):
 
     # Using glom to access data in the JSON object.
-    # Using append method to join those data into a array 
-    arr = []
-    arr.append(glom(returnData, 'results.0.name.first'))
-    arr.append(glom(returnData, 'results.0.name.last'))
-    arr.append(glom(returnData, 'results.0.gender'))
-    arr.append(str(glom(returnData, 'results.0.location.street.number')) + " " + glom(returnData, 'results.0.location.street.name'))
-    arr.append(glom(returnData, 'results.0.location.city'))
-    arr.append(glom(returnData, 'results.0.location.state'))
-    arr.append(glom(returnData, 'results.0.location.country'))
-    arr.append(glom(returnData, 'results.0.location.coordinates.latitude'))
-    arr.append(glom(returnData, 'results.0.location.coordinates.longitude'))
-    arr.append(str(glom(returnData, 'results.0.location.postcode')))
-    arr.append(glom(returnData, 'results.0.location.timezone.offset') + " " + glom(returnData, 'results.0.location.timezone.description'))
-    arr.append(glom(returnData, 'results.0.email'))
-    arr.append(glom(returnData, 'results.0.dob.date'))
-    arr.append(str(glom(returnData, 'results.0.dob.age')))
-    arr.append(str(glom(returnData, 'results.0.phone')))
-    arr.append(str(glom(returnData, 'results.0.cell')))
-
-    return arr
+    # Using simple generator to return the data 
+    yield glom(returnData, 'results.0.name.first')
+    yield glom(returnData, 'results.0.name.last')
+    yield glom(returnData, 'results.0.gender')
+    yield str(glom(returnData, 'results.0.location.street.number')) + " " + glom(returnData, 'results.0.location.street.name')
+    yield glom(returnData, 'results.0.location.city')
+    yield glom(returnData, 'results.0.location.state')
+    yield glom(returnData, 'results.0.location.country')
+    yield glom(returnData, 'results.0.location.coordinates.latitude')
+    yield glom(returnData, 'results.0.location.coordinates.longitude')
+    yield str(glom(returnData, 'results.0.location.postcode'))
+    yield glom(returnData, 'results.0.location.timezone.offset') + " " + glom(returnData, 'results.0.location.timezone.description')
+    yield glom(returnData, 'results.0.email')
+    yield glom(returnData, 'results.0.dob.date')
+    yield str(glom(returnData, 'results.0.dob.age'))
+    yield str(glom(returnData, 'results.0.phone'))
+    yield str(glom(returnData, 'results.0.cell'))
 
 
 # Created GUI Window with Tkinter
